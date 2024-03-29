@@ -1,6 +1,6 @@
 #!/bin/bash
 cd ..
-ARCH=x86_64 appimagetool ml4w-dotfiles-installer
+ARCH=x86_64 appimagetool ml4w-dotfiles-uninstaller
 echo ":: AppImage created"
-cp ML4W_Dotfiles_Installer-x86_64.AppImage ~/dotfiles-versions/dotfiles/apps/ML4W_Dotfiles_Installer.AppImage
+cp ML4W_Dotfiles_Uninstaller-x86_64.AppImage ~/dotfiles-versions/dotfiles/apps/ML4W_Dotfiles_Uninstaller.AppImage
 echo ":: AppImage copied to ~/dotfiles-versions/dotfiles/"
