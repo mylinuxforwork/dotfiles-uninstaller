@@ -120,3 +120,4 @@ fi
 figlet "DONE"
 echo ":: The ML4W Dotfiles have been removed."
 echo ":: SEE YOU NEXT TIME ;-) "
+sleep 3
