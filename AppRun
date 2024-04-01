@@ -34,7 +34,8 @@ else
 fi
 
 if gum confirm "DO YOU WANT TO CREATE A BACKUP OF YOUR DOTFILES?" ;then
-    echo ":: Backup created."
+    rsync -a ~/dotfiles ~/dotfiles-versions/backup/
+    echo ":: Backup of $HOME/dotfiles created in ~/dotfiles-versions/backup"
 elif [ $? -eq 130 ]; then
     echo ":: Uninstallation canceled."
     exit 130
@@ -43,11 +44,59 @@ else
     exit
 fi
 
+rm -rf $HOME/dotfiles
 echo ":: $HOME/dotfiles removed"
+
+if test -L ~/.bashrc ;then
+    rm $HOME/.bashrc
+fi
+if test -L ~/.config/qtile ;then
+    rm $HOME/.config/qtile
+fi
+if test -L ~/.config/hypr ;then
+    rm $HOME/.config/hypr
+fi
+if test -L ~/.config/rofi ;then
+    rm $HOME/.config/rofi
+fi
+if test -L ~/.config/wal ;then
+    rm $HOME/.config/wal
+fi
+if test -L ~/.config/waybar ;then
+    rm $HOME/.config/waybar
+fi
+if test -L ~/.config/wlogout ;then
+    rm $HOME/.config/wlogout
+fi
+if test -L ~/.config/alacritty ;then
+    rm $HOME/.config/alacritty
+fi
+if test -L ~/.config/starship ;then
+    rm $HOME/.config/starship
+fi
+if test -L ~/.config/picom ;then
+    rm $HOME/.config/picom
+fi
+if test -L ~/.config/nvim ;then
+    rm $HOME/.config/nvim
+fi
+if test -L ~/.config/vim ;then
+    rm $HOME/.config/vim
+fi
+if test -L ~/.config/dunst ;then
+    rm $HOME/.config/dunst
+fi
+if test -L ~/.config/swappy ;then
+    rm $HOME/.config/swappy
+fi
 echo ":: Symlinks removed"
+
+rm $HOME/.local/share/applications/ml4w-dotfiles-settings.desktop
+rm $HOME/.local/share/applications/ml4w-welcome.desktop
 echo ":: ML4W Apps removed"
 
 if gum confirm "DO YOU WANT TO RESTORE OLD CONFIGURATIONS FROM ~/dotfiles-versions/backup/config TO ~/.config?" ;then
+    rsync -a ~/dotfiles-versions/backup/config/ ~/.config/
     echo ":: Old configuration files restored in .config."
 elif [ $? -eq 130 ]; then
     echo ":: Uninstallation canceled."
@@ -63,6 +112,7 @@ elif [ $? -eq 130 ]; then
     echo ":: Uninstallation canceled."
     exit 130
 else
+    rm -rf $HOME/dotfiles-versions
     echo ":: $HOME/dotfiles-versions folder removed"
     exit
 fi

@@ -1,6 +1,6 @@
 [Desktop Entry]
 Type=Application
-Name=ML4W Dotfiles Installer
+Name=ML4W Dotfiles Uninstaller
 Exec=AppRun
 Icon=ml4w-icon
 Terminal=false
