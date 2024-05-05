@@ -93,6 +93,7 @@ echo ":: Symlinks removed"
 
 rm $HOME/.local/share/applications/ml4w-dotfiles-settings.desktop
 rm $HOME/.local/share/applications/ml4w-welcome.desktop
+rm $HOME/.local/share/applications/ml4w-hyprland-settings.desktop
 echo ":: ML4W Apps removed"
 
 if gum confirm "DO YOU WANT TO RESTORE OLD CONFIGURATIONS FROM ~/dotfiles-versions/backup/config TO ~/.config?" ;then
