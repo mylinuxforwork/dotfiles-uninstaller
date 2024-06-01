@@ -56,6 +56,9 @@ fi
 if test -L ~/.config/hypr ;then
     rm $HOME/.config/hypr
 fi
+if test -L ~/.config/fastfetch ;then
+    rm $HOME/.config/fastfetch
+fi
 if test -L ~/.config/rofi ;then
     rm $HOME/.config/rofi
 fi
@@ -120,5 +123,4 @@ fi
 
 figlet "DONE"
 echo ":: The ML4W Dotfiles have been removed."
-echo ":: SEE YOU NEXT TIME ;-) "
-sleep 3
+gum spin --spinner dot --title ":: SEE YOU NEXT TIME ;-)" -- sleep 3
