@@ -41,7 +41,6 @@ elif [ $? -eq 130 ]; then
     exit 130
 else
     echo ":: Backup Skipped."
-    exit
 fi
 
 rm -rf $HOME/dotfiles
