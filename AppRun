@@ -1,6 +1,6 @@
 #!/bin/bash
 clear
-
+dot_folder=$(cat ~/.config/ml4w/settings/dotfiles-folder.sh)
 # Some colors
 GREEN='\033[0;32m'
 NONE='\033[0m'
@@ -18,11 +18,11 @@ EOF
 echo "for ML4W Dotfiles"
 echo
 echo -e "${NONE}"
-echo "This script will support you to uninstall the ML4W Dotfiles from your system."
+echo "This script will support you to uninstall the ML4W Dotfiles in ~/$dot_folder from your system."
 echo "Only the ML4W Dotfiles related files and folders will be removed."
 echo "Packages will not be uninstalled. You have to uninstall packages manually if needed."
 echo "Your login manager (display manager) will stay untouched. Please remove it manually if needed."
-
+echo 
 if gum confirm "DO YOU WANT TO START THE UNINSTALLATION NOW?" ;then
     echo ":: Uninstallation started."
 elif [ $? -eq 130 ]; then
@@ -34,17 +34,17 @@ else
 fi
 
 if gum confirm "DO YOU WANT TO CREATE A BACKUP OF YOUR DOTFILES?" ;then
-    rsync -a ~/dotfiles ~/dotfiles-versions/backup/
-    echo ":: Backup of $HOME/dotfiles created in ~/dotfiles-versions/backup"
+    rsync -a ~/$dot_folder ~/dotfiles-versions/backup/
+    echo ":: Backup of $HOME/$dot_folder created in ~/dotfiles-versions/backup"
 elif [ $? -eq 130 ]; then
     echo ":: Uninstallation canceled."
     exit 130
 else
-    echo ":: Backup Skipped."
+    echo ":: Backup skipped."
 fi
 
-rm -rf $HOME/dotfiles
-echo ":: $HOME/dotfiles removed"
+rm -rf $HOME/$dot_folder
+echo ":: $HOME/$dot_folder removed"
 
 if test -L ~/.bashrc ;then
     rm $HOME/.bashrc
