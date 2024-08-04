@@ -7,14 +7,7 @@ NONE='\033[0m'
 
 # Header
 echo -e "${GREEN}"
-cat <<"EOF"
- _   _       _           _        _ _           
-| | | |_ __ (_)_ __  ___| |_ __ _| | | ___ _ __ 
-| | | | '_ \| | '_ \/ __| __/ _` | | |/ _ \ '__|
-| |_| | | | | | | | \__ \ || (_| | | |  __/ |   
- \___/|_| |_|_|_| |_|___/\__\__,_|_|_|\___|_|   
-                                                
-EOF
+figlet "Uninstaller"
 echo "for ML4W Dotfiles"
 echo
 echo -e "${NONE}"
@@ -26,10 +19,10 @@ echo
 if gum confirm "DO YOU WANT TO START THE UNINSTALLATION NOW?" ;then
     echo ":: Uninstallation started."
 elif [ $? -eq 130 ]; then
-    echo ":: Uninstallation canceled."
+    echo ":: Uninstaller canceled."
     exit 130
 else
-    echo ":: Uninstallation canceled."
+    echo ":: Uninstaller canceled."
     exit
 fi
 
@@ -102,7 +95,7 @@ if gum confirm "DO YOU WANT TO RESTORE OLD CONFIGURATIONS FROM ~/dotfiles-versio
     rsync -a ~/dotfiles-versions/backup/config/ ~/.config/
     echo ":: Old configuration files restored in .config."
 elif [ $? -eq 130 ]; then
-    echo ":: Uninstallation canceled."
+    echo ":: Uninstaller canceled."
     exit 130
 else
     echo ":: .config restore skipped."
@@ -112,7 +105,7 @@ fi
 if gum confirm "DO YOU WANT TO KEEP ~/dotfiles-version WITH ALL BACKUPS?" ;then
     echo ":: You will find the folder dotfiles-versions including your backups in your HOME folder."
 elif [ $? -eq 130 ]; then
-    echo ":: Uninstallation canceled."
+    echo ":: Uninstaller canceled."
     exit 130
 else
     rm -rf $HOME/dotfiles-versions
