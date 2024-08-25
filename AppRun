@@ -7,7 +7,7 @@ NONE='\033[0m'
 
 # Header
 echo -e "${GREEN}"
-figlet "Uninstaller"
+figlet -f smslant "Uninstaller"
 echo "for ML4W Dotfiles"
 echo
 echo -e "${NONE}"
@@ -114,6 +114,6 @@ else
     echo ":: $HOME/.ml4w-hyprland folder removed"
 fi
 
-figlet "DONE"
+figlet -f smslant "DONE"
 echo ":: The ML4W Dotfiles have been removed."
 gum spin --spinner dot --title ":: SEE YOU NEXT TIME ;-)" -- sleep 3
