@@ -102,7 +102,6 @@ elif [ $? -eq 130 ]; then
     exit 130
 else
     echo ":: .config restore skipped."
-    exit
 fi
 
 if gum confirm "DO YOU WANT TO KEEP ~/.ml4w-hyprland WITH ALL BACKUPS?" ;then
@@ -113,7 +112,6 @@ elif [ $? -eq 130 ]; then
 else
     rm -rf $HOME/.ml4w-hyprland
     echo ":: $HOME/.ml4w-hyprland folder removed"
-    exit
 fi
 
 figlet "DONE"
