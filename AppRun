@@ -27,8 +27,8 @@ else
 fi
 
 if gum confirm "DO YOU WANT TO CREATE A BACKUP OF YOUR DOTFILES?" ;then
-    rsync -a ~/$dot_folder ~/dotfiles-versions/backup/
-    echo ":: Backup of $HOME/$dot_folder created in ~/dotfiles-versions/backup"
+    rsync -a ~/$dot_folder ~/.ml4w-hyprland/backup/
+    echo ":: Backup of $HOME/$dot_folder created in ~/.ml4w-hyprland/backup"
 elif [ $? -eq 130 ]; then
     echo ":: Uninstallation canceled."
     exit 130
@@ -41,6 +41,9 @@ echo ":: $HOME/$dot_folder removed"
 
 if test -L ~/.bashrc ;then
     rm $HOME/.bashrc
+fi
+if test -L ~/.zshrc ;then
+    rm $HOME/.zshrc
 fi
 if test -L ~/.config/qtile ;then
     rm $HOME/.config/qtile
@@ -91,8 +94,8 @@ rm $HOME/.local/share/applications/ml4w-welcome.desktop
 rm $HOME/.local/share/applications/ml4w-hyprland-settings.desktop
 echo ":: ML4W Apps removed"
 
-if gum confirm "DO YOU WANT TO RESTORE OLD CONFIGURATIONS FROM ~/dotfiles-versions/backup/config TO ~/.config?" ;then
-    rsync -a ~/dotfiles-versions/backup/config/ ~/.config/
+if gum confirm "DO YOU WANT TO RESTORE OLD CONFIGURATIONS FROM ~/.ml4w-hyprland/backup/config TO ~/.config?" ;then
+    rsync -a ~/.ml4w-hyprland/backup/config/ ~/.config/
     echo ":: Old configuration files restored in .config."
 elif [ $? -eq 130 ]; then
     echo ":: Uninstaller canceled."
@@ -102,14 +105,14 @@ else
     exit
 fi
 
-if gum confirm "DO YOU WANT TO KEEP ~/dotfiles-version WITH ALL BACKUPS?" ;then
-    echo ":: You will find the folder dotfiles-versions including your backups in your HOME folder."
+if gum confirm "DO YOU WANT TO KEEP ~/.ml4w-hyprland WITH ALL BACKUPS?" ;then
+    echo ":: You will find the folder .ml4w-hyprland including your backups in your HOME folder."
 elif [ $? -eq 130 ]; then
     echo ":: Uninstaller canceled."
     exit 130
 else
-    rm -rf $HOME/dotfiles-versions
-    echo ":: $HOME/dotfiles-versions folder removed"
+    rm -rf $HOME/.ml4w-hyprland
+    echo ":: $HOME/.ml4w-hyprland folder removed"
     exit
 fi
 
