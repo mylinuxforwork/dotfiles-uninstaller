@@ -36,8 +36,12 @@ else
     echo ":: Backup skipped."
 fi
 
-rm -rf $HOME/$dot_folder
-echo ":: $HOME/$dot_folder removed"
+if [ ! -z $dot_folder ] ;then
+    if [ -f ~/.config/ml4w/settings/dotfiles-folder.sh ] ;then
+        rm -rf $HOME/$dot_folder
+        echo ":: $HOME/$dot_folder removed"
+    fi
+fi
 
 if test -L ~/.bashrc ;then
     rm $HOME/.bashrc
